@@ -23,9 +23,27 @@ async function getCurrentTab() {
 // }
 
 function selectElement() {
-  const element = document.body.firstChild;
-  const anchor = document.createElement('div');
-  document.body.insertBefore(anchor, element);
+  var overlay = document.getElementById('selectElementOverlayExtension');
+
+  // TODO: Put into another function is used again elsewhere
+  // Add overlay if it doesn't exist
+  if (overlay == null) {
+    const element = document.body.firstChild;
+    const newOverlay = document.createElement('div');
+    newOverlay.id = 'selectElementOverlayExtension';
+
+    // Darken screen
+    newOverlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+    newOverlay.style.width = `${document.body.offsetWidth}px`;
+    newOverlay.style.height = `${document.body.offsetHeight}px`;
+    newOverlay.style.zIndex = '9999999';
+    newOverlay.style.display = 'fixed';
+    newOverlay.style.position = 'absolute';
+    newOverlay.style.pointerEvents = 'none';
+
+    document.body.insertBefore(newOverlay, element);
+    overlay = document.getElementById('selectElementOverlayExtension');
+  }
 }
 
 document.getElementById('selectButton').addEventListener('click', async () => {
