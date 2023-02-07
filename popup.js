@@ -34,12 +34,14 @@ function selectElement() {
 
     // Darken screen
     newOverlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-    newOverlay.style.width = `${document.body.offsetWidth}px`;
-    newOverlay.style.height = `${document.body.offsetHeight}px`;
+    newOverlay.style.width = `${window.innerWidth}px`;
+    newOverlay.style.height = `${window.innerHeight}px`;
     newOverlay.style.zIndex = '9999999';
     newOverlay.style.display = 'fixed';
-    newOverlay.style.position = 'absolute';
+    newOverlay.style.position = 'fixed';
     newOverlay.style.pointerEvents = 'none';
+    newOverlay.style.top = '0';
+    newOverlay.style.left = '0';
 
     document.body.insertBefore(newOverlay, element);
     overlay = document.getElementById('selectElementOverlayExtension');
