@@ -4,17 +4,36 @@ async function getCurrentTab() {
   return tab;
 }
 
+// function selectElement(tabId) {
+//   document.body.style.backgroundColor = 'red';
+//   // chrome.tabs.sendMessage(
+//   //   tabId,
+//   //   { createOverlay: { width: '100px', height: '100px', innerHTML: 'Hello' } },
+//   //   function (response) {
+//   //     console.log(response);
+//   //   }
+//   // );
+
+//   // chrome.runtime.sendMessage({
+//   //   message: { createOverlay: { width: '100px', height: '100px', innerHTML: 'Hello' } },
+//   //   callback: (response) => {
+//   //     console.log(response);
+//   //   },
+//   // });
+// }
+
+function selectElement() {
+  const element = document.body.firstChild;
+  const anchor = document.createElement('div');
+  document.body.insertBefore(anchor, element);
+}
+
 document.getElementById('selectButton').addEventListener('click', async () => {
   let tab = await getCurrentTab();
-  console.log(tab);
 
   chrome.scripting.executeScript({
     target: { tabId: tab.id },
     // files: ['select.js'],
-    func: changeBackgroundColor,
+    func: selectElement, //whatever function runs here is executed as content script
   });
 });
-
-function changeBackgroundColor() {
-  document.body.style.backgroundColor = 'red';
-}
