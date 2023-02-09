@@ -10,6 +10,7 @@ function addTextbox(e) {
     newTextbox.style.position = 'absolute';
     newTextbox.style.left = `${e.clientX}px`;
     newTextbox.style.top = `${e.clientY}px`;
+    newTextbox.textContent = `Id: ${e.target.id}\n Value: ${e.target.textContent}`;
 
     document.body.insertBefore(newTextbox, element);
     overlay = document.getElementById('textboxExtension');
