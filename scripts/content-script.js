@@ -1,6 +1,7 @@
 function selectElement() {
   // addScreenListeners();
   addHighlightListeners();
+  addTextboxListeners();
 }
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {

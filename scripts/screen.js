@@ -11,7 +11,7 @@ function darkenScreen() {
     newOverlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
     newOverlay.style.width = `${window.innerWidth}px`;
     newOverlay.style.height = `${window.innerHeight}px`;
-    newOverlay.style.zIndex = '2147483646';
+    newOverlay.style.zIndex = '2147483645';
     newOverlay.style.display = 'fixed';
     newOverlay.style.position = 'fixed';
     newOverlay.style.pointerEvents = 'none';

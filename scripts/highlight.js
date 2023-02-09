@@ -3,7 +3,7 @@ let originalZIndex = 0;
 function highlight(e) {
   e.target.style.backgroundColor = 'yellow';
   originalZIndex = e.target.style.zIndex;
-  e.target.style.zIndex = '2147483647';
+  e.target.style.zIndex = '2147483646';
 }
 
 function unhighlight(e) {
