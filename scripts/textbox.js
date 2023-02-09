@@ -6,11 +6,12 @@ function addTextbox(e) {
     const newTextbox = document.createElement('div');
     newTextbox.id = 'textboxExtension';
     newTextbox.className = 'textboxExtension';
-    newTextbox.style.zIndex = '2147483647';
-    newTextbox.style.position = 'absolute';
     newTextbox.style.left = `${e.clientX}px`;
     newTextbox.style.top = `${e.clientY}px`;
-    newTextbox.textContent = `Id: ${e.target.id}\n Value: ${e.target.textContent}`;
+    // TODO: Refactor the output of the textbox
+    newTextbox.innerHTML = `${
+      e.target.id != '' ? `Id: ${e.target.id}<br>` : ''
+    }Value: ${e.target.textContent.substr(0, 50)}`;
 
     document.body.insertBefore(newTextbox, element);
     overlay = document.getElementById('textboxExtension');
