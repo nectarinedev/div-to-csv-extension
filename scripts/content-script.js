@@ -5,7 +5,7 @@ function selectElement() {
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   switch (request.type) {
-    case 'createOverlay':
+    case 'selectElement':
       selectElement();
       sendResponse({ value: 'Success' });
     default:

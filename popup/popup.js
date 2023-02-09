@@ -8,7 +8,7 @@ document.getElementById('selectButton').addEventListener('click', async () => {
   const tab = await getCurrentTab();
 
   const response = await chrome.tabs.sendMessage(tab.id, {
-    type: 'createOverlay',
+    type: 'selectElement',
   });
 
   console.log(response);
