@@ -5,12 +5,12 @@
   "description": "Creates a list from divs listed on the page",
   "permissions": ["scripting", "activeTab", "tabs"],
   "action": {
-    "default_popup": "popup.html"
+    "default_popup": "/popup/popup.html"
   },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["content.js"]
+      "js": ["/scripts/content-script.js"]
     }
   ]
 }
