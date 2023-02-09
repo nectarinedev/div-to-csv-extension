@@ -22,3 +22,21 @@ function darkenScreen() {
     overlay = document.getElementById('selectElementOverlayExtension');
   }
 }
+
+function removeScreen() {
+  var overlay = document.getElementById('selectElementOverlayExtension');
+
+  if (overlay != null) {
+    overlay.remove();
+  }
+}
+
+function addScreenListeners() {
+  darkenScreen();
+  document.body.addEventListener('click', removeScreenListeners);
+}
+
+function removeScreenListeners() {
+  removeScreen();
+  document.body.removeEventListener('click', removeScreenListeners);
+}

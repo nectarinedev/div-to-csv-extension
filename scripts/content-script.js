@@ -1,5 +1,6 @@
 function selectElement() {
-  darkenScreen();
+  addScreenListeners();
+  addHighlightListeners();
 }
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {

@@ -10,7 +10,11 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["/scripts/content-script.js", "/scripts/screen.js"]
+      "js": [
+        "/scripts/content-script.js",
+        "/scripts/screen.js",
+        "/scripts/highlight.js"
+      ]
     }
   ]
 }
