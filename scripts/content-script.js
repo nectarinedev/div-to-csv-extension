@@ -1,5 +1,5 @@
 function selectElement() {
-  addScreenListeners();
+  // addScreenListeners();
   addHighlightListeners();
 }
 
