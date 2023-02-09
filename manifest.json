@@ -3,7 +3,7 @@
   "version": "1.0",
   "name": "Div To Chrome",
   "description": "Creates a list from divs listed on the page",
-  "permissions": ["scripting", "activeTab", "tabs"],
+  "permissions": ["scripting", "activeTab", "tabs", "storage"],
   "action": {
     "default_popup": "/popup/popup.html"
   },
@@ -15,8 +15,12 @@
         "/scripts/content-script.js",
         "/scripts/screen.js",
         "/scripts/highlight.js",
-        "/scripts/textbox.js"
+        "/scripts/textbox.js",
+        "/scripts/data.js"
       ]
     }
-  ]
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
 }
