@@ -1,19 +1,13 @@
 .textboxExtension {
-  position: relative;
-  background: #00aabb;
-  border-radius: 0.4em;
-}
-
-.textboxExtension:after {
   content: '';
   position: absolute;
-  bottom: 0;
-  width: 0;
-  height: 0;
+  width: 50px;
+  height: 50px;
   border: 20px solid transparent;
   border-top-color: #00aabb;
   border-bottom: 0;
   border-left: 0;
   margin-left: -10px;
   margin-bottom: -20px;
+  z-index: 2147483647;
 }
