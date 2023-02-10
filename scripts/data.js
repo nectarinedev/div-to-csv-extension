@@ -1,7 +1,14 @@
-function sendData() {
+key = 0;
+
+function sendData(e) {
   chrome.runtime.sendMessage({
     type: 'addData',
+    key: key,
+    value: e.target.textContent,
   });
+
+  // Go to next key to add object
+  key++;
 }
 
 function addDataListeners() {
