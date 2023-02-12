@@ -1,15 +1,32 @@
-function addData(key, value) {
-  var obj = {};
-  obj[key] = value;
-  chrome.storage.local.set(obj);
+let key = 0;
+
+async function getCurrentIndex() {
+  const result = await chrome.storage.local.get(['index']);
+
+  if (Object.keys(result).length !== 0) {
+    key = result.index;
+    key++;
+  }
 }
 
-chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-  console.log(request);
+async function addData(value) {
+  var obj = {};
+  obj[key] = value;
+  await chrome.storage.local.set(obj);
 
+  // Set Current Key
+  await chrome.storage.local.set({ index: key });
+}
+
+chrome.runtime.onMessage.addListener(async function (
+  request,
+  sender,
+  sendResponse
+) {
   switch (request.type) {
     case 'addData':
-      addData(request.key, request.value);
+      await getCurrentIndex();
+      await addData(request.value);
       sendResponse({ value: 'Success' });
     default:
       break;
