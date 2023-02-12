@@ -18,6 +18,15 @@ async function showAllData() {
   const parentElement = document.getElementById('data');
 
   const keys = Object.keys(allData);
+  const tableOutput = keys
+    .map((key) => {
+      if (key === 'index') {
+        return;
+      }
+
+      return `<tr> <td>${key}</td> <td>${allData[key]}</td> </tr>`;
+    })
+    .join(' ');
 
   parentElement.innerHTML = `
     <table border="1">
@@ -26,9 +35,7 @@ async function showAllData() {
           <th>Key</th>
           <th>Value</th>
         </tr>
-        ${keys.map(
-          (key) => `<tr> <td>${key}</td> <td>${allData[key]}</td> </tr>`
-        )}
+        ${tableOutput}
       </tbody>
     </table>
   `;
