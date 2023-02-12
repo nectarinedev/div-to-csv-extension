@@ -10,6 +10,38 @@ document.getElementById('selectButton').addEventListener('click', async () => {
   const response = await chrome.tabs.sendMessage(tab.id, {
     type: 'selectElement',
   });
+});
 
-  console.log(response);
+async function showAllData() {
+  const allData = await chrome.storage.local.get(null);
+
+  const parentElement = document.getElementById('data');
+
+  const keys = Object.keys(allData);
+
+  parentElement.innerHTML = `
+    <table border="1">
+      <tbody>
+        <tr>
+          <th>Key</th>
+          <th>Value</th>
+        </tr>
+        ${keys.map(
+          (key) => `<tr> <td>${key}</td> <td>${allData[key]}</td> </tr>`
+        )}
+      </tbody>
+    </table>
+  `;
+  parentElement.style.display = 'block';
+  console.log(parentElement.style.display);
+}
+
+chrome.storage.onChanged.addListener(async (changes, namespace) => {
+  // for (let [key, { oldValue, newValue }] of Object.entries(changes)) {
+  //   console.log(
+  //     `Storage key "${key}" in namespace "${namespace}" changed.`,
+  //     `Old value was "${oldValue}", new value is "${newValue}".`
+  //   );
+  // }
+  showAllData();
 });
