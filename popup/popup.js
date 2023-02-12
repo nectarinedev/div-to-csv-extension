@@ -18,6 +18,14 @@ document.getElementById('selectButton').addEventListener('click', async () => {
   window.close();
 });
 
+document.getElementById('clearButton').addEventListener('click', async () => {
+  await chrome.storage.local.clear();
+});
+
+document.getElementById('clearButton').addEventListener('click', async () => {
+  window.close();
+});
+
 async function showAllData() {
   const allData = await chrome.storage.local.get(null);
 
