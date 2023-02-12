@@ -4,6 +4,7 @@ async function getCurrentTab() {
   return tab;
 }
 
+// Listener for user to select element on the page
 document.getElementById('selectButton').addEventListener('click', async () => {
   const tab = await getCurrentTab();
 
@@ -12,10 +13,17 @@ document.getElementById('selectButton').addEventListener('click', async () => {
   });
 });
 
+// Listener to close popup after user presses the button
+document.getElementById('selectButton').addEventListener('click', async () => {
+  window.close();
+});
+
 async function showAllData() {
   const allData = await chrome.storage.local.get(null);
 
-  const parentElement = document.getElementById('data');
+  if (Object.keys(allData).length === 0) {
+    return;
+  }
 
   const keys = Object.keys(allData);
   const tableOutput = keys
@@ -28,6 +36,7 @@ async function showAllData() {
     })
     .join(' ');
 
+  const parentElement = document.getElementById('data');
   parentElement.innerHTML = `
     <table border="1">
       <tbody>
@@ -39,8 +48,8 @@ async function showAllData() {
       </tbody>
     </table>
   `;
+
   parentElement.style.display = 'block';
-  console.log(parentElement.style.display);
 }
 
 chrome.storage.onChanged.addListener(async (changes, namespace) => {
@@ -53,6 +62,7 @@ chrome.storage.onChanged.addListener(async (changes, namespace) => {
   showAllData();
 });
 
+// Load all the data in local storage when popup.html is opened
 document.addEventListener('DOMContentLoaded', function () {
   showAllData();
 });
