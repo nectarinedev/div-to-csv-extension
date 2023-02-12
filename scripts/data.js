@@ -13,6 +13,7 @@ function sendData(e) {
 
   chrome.runtime.sendMessage({
     type: 'addData',
+    url: e.target.baseURI,
     selector: selector,
     selectorValue: selectorValue,
     value: e.target.textContent,

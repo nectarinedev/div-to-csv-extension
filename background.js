@@ -9,10 +9,11 @@ async function getCurrentIndex() {
   }
 }
 
-async function addData(selector, selectorValue, value) {
+async function addData(url, selector, selectorValue, value) {
   var obj = {};
   obj[key] = {
     index: key,
+    url: url,
     selector: selector,
     selectorValue: selectorValue,
     value: value,
@@ -31,7 +32,12 @@ chrome.runtime.onMessage.addListener(async function (
   switch (request.type) {
     case 'addData':
       await getCurrentIndex();
-      await addData(request.selector, request.selectorValue, request.value);
+      await addData(
+        request.url,
+        request.selector,
+        request.selectorValue,
+        request.value
+      );
       sendResponse({ value: 'Success' });
     default:
       break;
