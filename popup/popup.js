@@ -52,3 +52,7 @@ chrome.storage.onChanged.addListener(async (changes, namespace) => {
   // }
   showAllData();
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+  showAllData();
+});
