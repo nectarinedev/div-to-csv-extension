@@ -11,5 +11,6 @@ function addDataListeners() {
 }
 
 function removeDataListeners() {
+  document.body.removeEventListener('click', sendData);
   document.body.removeEventListener('click', removeDataListeners);
 }
