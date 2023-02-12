@@ -32,7 +32,7 @@ async function showAllData() {
         return;
       }
 
-      const value = allData[key].replace('`', '\\`');
+      const value = allData[key].value.replace('`', '\\`');
 
       return `<tr> <td>${key}</td> <td>${value}</td> </tr>`;
     })
@@ -55,12 +55,6 @@ async function showAllData() {
 }
 
 chrome.storage.onChanged.addListener(async (changes, namespace) => {
-  // for (let [key, { oldValue, newValue }] of Object.entries(changes)) {
-  //   console.log(
-  //     `Storage key "${key}" in namespace "${namespace}" changed.`,
-  //     `Old value was "${oldValue}", new value is "${newValue}".`
-  //   );
-  // }
   showAllData();
 });
 

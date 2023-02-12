@@ -9,9 +9,14 @@ async function getCurrentIndex() {
   }
 }
 
-async function addData(value) {
+async function addData(selector, selectorValue, value) {
   var obj = {};
-  obj[key] = value;
+  obj[key] = {
+    index: key,
+    selector: selector,
+    selectorValue: selectorValue,
+    value: value,
+  };
   await chrome.storage.local.set(obj);
 
   // Set Current Key
@@ -26,7 +31,7 @@ chrome.runtime.onMessage.addListener(async function (
   switch (request.type) {
     case 'addData':
       await getCurrentIndex();
-      await addData(request.value);
+      await addData(request.selector, request.selectorValue, request.value);
       sendResponse({ value: 'Success' });
     default:
       break;
