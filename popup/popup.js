@@ -32,7 +32,9 @@ async function showAllData() {
         return;
       }
 
-      return `<tr> <td>${key}</td> <td>${allData[key]}</td> </tr>`;
+      const value = allData[key].replace('`', '\\`');
+
+      return `<tr> <td>${key}</td> <td>${value}</td> </tr>`;
     })
     .join(' ');
 
